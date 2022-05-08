@@ -19,7 +19,7 @@ GENDER_CATEGORY = (
 
 # Create your models here.
 class Book(models.Model):
-    isbn = models.CharField(max_length=10,unique=True,default=generate_isbn())
+    isbn = models.CharField(max_length=10,unique=True,default=generate_isbn)
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=10,choices=BOOK_CATEGORY)
     author = models.ForeignKey('Author',on_delete=models.CASCADE)
