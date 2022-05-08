@@ -25,7 +25,9 @@ class Book(models.Model):
     author = models.ForeignKey('Author',on_delete=models.CASCADE)
     library = models.ManyToManyField('Library',related_name='books')
     Publications = models.ForeignKey('Publication',on_delete=models.CASCADE,related_name='books')
-    pass
+    
+    def __str__(self):
+        return self.name
 
 class Author(models.Model):
     name = models.CharField(max_length=200)
@@ -33,13 +35,19 @@ class Author(models.Model):
     nationality = CountryField(blank_label='(Select country)')
     born_date = models.DateField()
     publication = models.OneToOneField('Publication',on_delete=models.CASCADE)
-    pass
+    
+    def __str__(self):
+        return self.name
 
 class Library(models.Model):
     name = models.CharField(max_length=200)
     district = models.CharField(max_length=200)
-    pass
+    
+    def __str__(self):
+        return self.name
 
 class Publication(models.Model):
     name = models.CharField(max_length=200)    
-    pass
+    
+    def __str__(self):
+        return self.name
