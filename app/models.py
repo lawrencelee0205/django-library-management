@@ -34,7 +34,7 @@ class Author(models.Model):
     gender = models.CharField(max_length=10,choices=GENDER_CATEGORY)
     nationality = CountryField(blank_label='(Select country)')
     born_date = models.DateField()
-    publication = models.OneToOneField('Publication',on_delete=models.CASCADE)
+    publication = models.ForeignKey('Publication',on_delete=models.CASCADE,related_name='authors')
     
     def __str__(self):
         return self.name
